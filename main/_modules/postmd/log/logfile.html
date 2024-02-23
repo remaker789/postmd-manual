@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>postmd.log.logfile &mdash; PostMD Documentation 0.0.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PostMD Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">PostMD</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PostMD Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">postmd.log.logfile</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for postmd.log.logfile</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;This script is to process the files generated from log file(log.lammps).</span>
+<span class="sd">@Author  :   Shusong Zhang</span>
+<span class="sd">@Email   :   sszhang@mail.nwpu.edu.cn, zhangshusong789@gmail.com</span>
+<span class="sd">@File    :   FileOperation.py</span>
+<span class="sd">@Time    :   2023/05/05 10:46:11</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">judge_file</span>
+
+
+<div class="viewcode-block" id="LogFile"><a class="viewcode-back" href="../../../postmd.log.html#postmd.log.logfile.LogFile">[docs]</a><span class="k">class</span> <span class="nc">LogFile</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lammps_version</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">=</span><span class="kc">None</span>
+        
+     
+        
+<div class="viewcode-block" id="LogFile.set_path"><a class="viewcode-back" href="../../../postmd.log.html#postmd.log.logfile.LogFile.set_path">[docs]</a>    <span class="k">def</span> <span class="nf">set_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set the path of log file(log.lammps) and judge the validity of the path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str, optional): the path to the log file. Defaults to None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="n">judge_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You are processing the file: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span></div>
+
+ 
+        
+        
+<div class="viewcode-block" id="LogFile.get_lammps_version"><a class="viewcode-back" href="../../../postmd.log.html#postmd.log.logfile.LogFile.get_lammps_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_lammps_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get the version of lammps used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>     
+        <span class="n">judge_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>   
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lammps_version</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The version of LAMMPS: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lammps_version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+    
+
+<div class="viewcode-block" id="LogFile.extract_thermodata"><a class="viewcode-back" href="../../../postmd.log.html#postmd.log.logfile.LogFile.extract_thermodata">[docs]</a>    <span class="k">def</span> <span class="nf">extract_thermodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="p">,</span> <span class="n">block_start</span> <span class="o">=</span> <span class="s2">&quot;Per MPI rank&quot;</span><span class="p">,</span> <span class="n">block_end</span> <span class="o">=</span> <span class="s2">&quot;Loop time of&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;extracted-log.lammps&quot;</span><span class="p">):</span>        
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;extract the thermo data from log file</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            block_start (str, optional): the start string of the block of thermo data. Defaults to &quot;Per MPI rank&quot;.</span>
+<span class="sd">            block_end (str, optional): the end string of the block of thermo data. Defaults to &quot;Loop time of&quot;.</span>
+<span class="sd">            paths (str, optional): the path to the log file. Default to None, which means use self.path</span>
+<span class="sd">            </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            1. block_start=&#39;Step&#39; and block_end=&quot;Loop time of&quot; usually works for most case in LAMMPS (29 Oct 2020). </span>
+<span class="sd">            If the block changed with lammps, you can change it with keyword arguments.</span>
+
+<span class="sd">            2. If the block of thermo data contain the WARNING, for example, sub-domain..., this function can not omit the WARNING.</span>
+<span class="sd">            Maybe a good choice is to add a judgement depend on the percent of characters exceeding 50% with Regular Expression!</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="k">if</span> <span class="n">path</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">output</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">logfile</span><span class="p">:</span>
+            <span class="n">lines_block_start</span><span class="o">=</span><span class="p">[]</span> <span class="c1"># the list storing the line number of block start</span>
+            <span class="n">lines_block_end</span><span class="o">=</span><span class="p">[]</span>   <span class="c1"># the list storing the line number of block end</span>
+            <span class="n">num_block</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># count the number of blocks</span>
+            <span class="n">line_block_start</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">line_block_end</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">write</span><span class="o">=</span><span class="kc">False</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">logfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()):</span>
+                <span class="c1"># todo 看看能不能再精简代码结构。。。现在还是有点麻烦</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">block_end</span><span class="p">):</span>
+                    <span class="n">write</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="n">line_block_end</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span>
+                    <span class="n">lines_block_end</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_block_end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># the line in python starts from 0</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">block_start</span><span class="p">):</span>
+                    <span class="k">if</span>  <span class="n">i</span> <span class="o">==</span> <span class="n">line_block_start</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines_block_end</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># avoid output the header second time.</span>
+                        <span class="k">continue</span>
+                    
+                    <span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+                        <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="o">+</span><span class="n">line</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">write</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="n">line_block_start</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                    <span class="n">lines_block_start</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_block_start</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># the line in python starts from 0</span>
+
+                
+            <span class="n">output_path</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">),</span> <span class="n">output</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The line number of block start: </span><span class="si">{</span><span class="n">lines_block_start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The line number of block end:   </span><span class="si">{</span><span class="n">lines_block_end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------- Extracting logfile succeed! -----------&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The extracted file: &#39;</span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Shusong Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../../../dev/index.html">dev</a></dd>
+      <dd><a href="logfile.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

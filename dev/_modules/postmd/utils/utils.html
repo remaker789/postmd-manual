@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>postmd.utils.utils &mdash; PostMD Documentation 0.0.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PostMD Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../avetime/toc.html">AveTime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">PostMD</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PostMD Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">postmd.utils.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for postmd.utils.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">C</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="n">NA</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">Avogadro</span>
+
+<div class="viewcode-block" id="create_path"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.create_path">[docs]</a><span class="k">def</span> <span class="nf">create_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建路径为path的文件夹。如果文件夹已存在，则将原文件夹备份，并添加.bkXXX后缀</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (_type_): _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">path</span> <span class="o">+=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">backup</span><span class="p">:</span>
+        <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">bk_dirname</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">+</span> <span class="s2">&quot;.bk</span><span class="si">%03d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">counter</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">bk_dirname</span><span class="p">):</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">bk_dirname</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="cum_ave"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.cum_ave">[docs]</a><span class="k">def</span> <span class="nf">cum_ave</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the cumulative average</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (1d list): the data need to do the cumulative average</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: the cumulative average</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cal_box_length"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.cal_box_length">[docs]</a><span class="k">def</span> <span class="nf">cal_box_length</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the length of a cubic water box</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num (int): the number of water molecules.</span>
+<span class="sd">        density (float, optional): the density of water, in g/cm^3. Defaults to 1.0.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: the length of a cubic water box, in Angstrom</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mass_O</span><span class="o">=</span><span class="mf">15.9994</span>
+    <span class="n">mass_H</span><span class="o">=</span><span class="mf">1.008</span>
+    <span class="n">mass_water</span> <span class="o">=</span> <span class="n">mass_O</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">mass_H</span>
+    <span class="n">box_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">density</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">mass_water</span><span class="o">*</span><span class="n">NA</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e8</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The length of a cubic water box for </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> water molecules and </span><span class="si">{</span><span class="n">density</span><span class="si">}</span><span class="s2"> g/cm^3 is </span><span class="si">{</span><span class="n">box_length</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Angstrom&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">box_length</span></div>
+
+
+<div class="viewcode-block" id="stat_bin"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.stat_bin">[docs]</a><span class="k">def</span> <span class="nf">stat_bin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;statistic the mean and standard deviation(ddof=0) of x and y in each bin.</span>
+<span class="sd">    Here we used the [scipy.stats.binned_statistic](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html) function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: (N,) array_like. A sequence of values to be binned.</span>
+<span class="sd">        y: (N,) array_like. The data on which the statistic will be computed. This must be the same shape as x, or a set of sequences - each the same shape as x. If values is a set of sequences, the statistic will be computed on each independently.</span>
+<span class="sd">        bins (int or sequence of scalars, optional): If bins is an int, it defines the number of equal-width bins in the given range (10 by default). If bins is a sequence, it defines the bin edges, including the rightmost edge, allowing for non-uniform bin widths. Values in x that are smaller than lowest bin edge are assigned to bin number 0, values beyond the highest bin are assigned to bins[-1]. If the bin edges are specified, the number of bins will be, (nx = len(bins)-1). Defaults to 10.</span>
+<span class="sd">        range ((float, float) or [(float, float)], optional): The lower and upper range of the bins. If not provided, range is simply (x.min(), x.max()). Values outside the range are ignored. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        _type_: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">x_mean</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">)</span>
+    <span class="n">x_std</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">)</span>
+    <span class="n">y_mean</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">)</span>
+    <span class="n">y_std</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="nb">range</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_mean</span><span class="p">,</span> <span class="n">x_std</span><span class="p">,</span> <span class="n">y_mean</span><span class="p">,</span> <span class="n">y_std</span></div>
+
+
+<div class="viewcode-block" id="judge_file"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.judge_file">[docs]</a><span class="k">def</span> <span class="nf">judge_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;judge whether the path of object is accessable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39; is not a file!&quot;</span><span class="p">)</span>  </div>
+    
+
+<div class="viewcode-block" id="judge_dir"><a class="viewcode-back" href="../../../postmd.utils.html#postmd.utils.utils.judge_dir">[docs]</a><span class="k">def</span> <span class="nf">judge_dir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;judge whether the path of object is accessable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39; is not a dir!&quot;</span><span class="p">)</span> </div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Shusong Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: dev
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="utils.html">dev</a></dd>
+      <dd><a href="../../../../main/index.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
