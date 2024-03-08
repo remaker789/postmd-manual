@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postmd.avetime.greenkubo &mdash; PostMD Documentation 0.0.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
+  <title>postmd.avetime.greenkubo &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
 
   
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -43,7 +46,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../avetime/toc.html">AveTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">2. Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul>
@@ -83,14 +87,16 @@
 
 
 <span class="c1"># 一般来说GreenKubo是对平衡态下某些参数的自相关函数进行时间上的积分。</span>
-<div class="viewcode-block" id="GreenKubo"><a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.greenkubo.GreenKubo">[docs]</a><span class="k">class</span> <span class="nc">GreenKubo</span><span class="p">(</span><span class="n">AveTime</span><span class="p">):</span>
+<div class="viewcode-block" id="GreenKubo">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.GreenKubo">[docs]</a>
+<span class="k">class</span> <span class="nc">GreenKubo</span><span class="p">(</span><span class="n">AveTime</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the auto-correlation function (acf) and corresponding integration</span>
 <span class="sd">    for Green-Kubo formula. But you need to pay attention to the true equation of</span>
 <span class="sd">    Green-Kubo formula, because this script just do the integration of acf, not</span>
 <span class="sd">    including other parts, like multiply or divide by some properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">298.0</span><span class="p">,</span> <span class="n">timestep</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">timestep</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timestep</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timestep</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="o">=</span><span class="kc">None</span>
@@ -107,7 +113,9 @@
     <span class="c1">#         pass     # todo: 不是overwrite的数据，只需要取最后一个block</span>
     
     
-<div class="viewcode-block" id="GreenKubo.cal_acf"><a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.greenkubo.GreenKubo.cal_acf">[docs]</a>    <span class="k">def</span> <span class="nf">cal_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag_col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_trans</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="GreenKubo.cal_acf">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.GreenKubo.cal_acf">[docs]</a>
+    <span class="k">def</span> <span class="nf">cal_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag_col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_trans</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;calculate the acf from data file and store in ``self.nlag`` and ``self.acf``.</span>
 
 <span class="sd">        Args:</span>
@@ -138,12 +146,15 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the data type &#39;</span><span class="si">{</span><span class="n">data_type</span><span class="si">}</span><span class="s2">&#39; is not supported! Please use &#39;acf&#39; or &#39;raw&#39; instead.&quot;</span><span class="p">)</span></div>
+
             
         
             
     
     <span class="c1"># 这里的integrate只是用来对acf进行积分</span>
-<div class="viewcode-block" id="GreenKubo.integrate_acf"><a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.greenkubo.GreenKubo.integrate_acf">[docs]</a>    <span class="k">def</span> <span class="nf">integrate_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;simpson&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="GreenKubo.integrate_acf">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.GreenKubo.integrate_acf">[docs]</a>
+    <span class="k">def</span> <span class="nf">integrate_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;simpson&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Integrate the acf data to the Green-Kubo formula and store in ``self.int_acf``.</span>
 
 <span class="sd">        Args:</span>
@@ -172,21 +183,29 @@
             <span class="n">int_acf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_int</span><span class="p">)</span>
             
         <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">int_acf</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">timestep</span><span class="o">*</span><span class="mf">1e-15</span></div>
+
     
-<div class="viewcode-block" id="GreenKubo.write_result"><a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.greenkubo.GreenKubo.write_result">[docs]</a>    <span class="k">def</span> <span class="nf">write_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;gk.csv&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="GreenKubo.write_result">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.GreenKubo.write_result">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;gk.csv&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;write the data of nlag, acf and integration of acf to file</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            filename (str, optional): the filename for output. Defaults to ``&quot;gk.csv&quot;``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>               
         <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;acf-</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="p">],</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;nlag,acf,int_acf&quot;</span><span class="p">)</span></div>
+
         
         
     <span class="c1"># 2023-08-28 校正有限尺寸的摩擦系数，因为green-kubo计算的摩擦系数会降低，所以我们需要校正</span>
     <span class="c1"># 目前是根据Haruki Oga_2019_JCP的文章校正的    </span>
     <span class="c1">#pending 不确定会不会做。。。</span>
-<div class="viewcode-block" id="GreenKubo.finite_size_correct_friction_coeff"><a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.greenkubo.GreenKubo.finite_size_correct_friction_coeff">[docs]</a>    <span class="k">def</span> <span class="nf">finite_size_correct_friction_coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div></div>
+<div class="viewcode-block" id="GreenKubo.finite_size_correct_friction_coeff">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.GreenKubo.finite_size_correct_friction_coeff">[docs]</a>
+    <span class="k">def</span> <span class="nf">finite_size_correct_friction_coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</div>
+
         
     
 

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppendAnimate class &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utils package" href="../utils/toc.html" />
+    <link rel="prev" title="CumAnimate class" href="cum_animate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PostMD Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">2. Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../avetime/toc.html">avetime package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../avechunk/toc.html">avechunk package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="toc.html">animate package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cum_animate.html">CumAnimate class</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AppendAnimate class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#postmd.animate.AppendAnimate"><code class="docutils literal notranslate"><span class="pre">AppendAnimate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc.html#customize">Customize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/toc.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">PostMD</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PostMD Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html"><span class="section-number">2. </span>Usage</a></li>
+          <li class="breadcrumb-item"><a href="toc.html">animate package</a></li>
+      <li class="breadcrumb-item active">AppendAnimate class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/animate/append_animate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendanimate-class">
+<h1>AppendAnimate class<a class="headerlink" href="#appendanimate-class" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="postmd.animate.AppendAnimate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.</span></span><span class="sig-name descname"><span class="pre">AppendAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postmd/animate/append_animate.html#AppendAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../postmd.animate.html#postmd.animate.animate.Animate" title="postmd.animate.animate.Animate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animate</span></code></a></p>
+<p>animate data by appending data to the figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – a set of y data <code class="docutils literal notranslate"><span class="pre">(ydata1,</span> <span class="pre">ydata2,</span> <span class="pre">...)</span></code>, or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">(ydata1,</span> <span class="pre">ydata2,</span> <span class="pre">...)</span></code>. Each <cite>ydata</cite> should be a 1D array.</p></li>
+<li><p><strong>fps</strong> (<em>int</em><em>, </em><em>optional</em>) – Frames per second (FPS) setting for animation. Defaults to <code class="docutils literal notranslate"><span class="pre">20</span></code>.</p></li>
+<li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>optional</em>) – Dots per inch (DPI) resolution for animation. Defaults to <code class="docutils literal notranslate"><span class="pre">72</span></code>.</p></li>
+<li><p><strong>range_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Determines the behavior of x and y limits in the animation. Defaults to <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>.
+- If set to <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>, the x and y limits will automatically adjust to the data range.
+- If set to <code class="docutils literal notranslate"><span class="pre">'fix'</span></code>, the x and y limits will be fixed to a specific range. The fixed range is from the min to max of data plus 5% margin.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.animate.AppendAnimate.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postmd/animate/append_animate.html#AppendAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.show" title="Link to this definition"></a></dt>
+<dd><p>show the animation of data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.animate.AppendAnimate.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postmd/animate/append_animate.html#AppendAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.save" title="Link to this definition"></a></dt>
+<dd><p>save the animation of data to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – file name to output</p></li>
+<li><p><strong>output_format</strong> (<em>str</em><em>, </em><em>optional</em>) – the output format. Now only support <code class="docutils literal notranslate"><span class="pre">gif</span></code>, <code class="docutils literal notranslate"><span class="pre">mp4</span></code>, and <code class="docutils literal notranslate"><span class="pre">avi</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning the output format is inferred from the filename extension.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="example">
+<span id="append-animate-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">postmd.animate</span> <span class="kn">import</span> <span class="n">AppendAnimate</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">y_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>  <span class="c1"># Assume this is the sine wave data to be animated</span>
+    <span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># Corresponding x-axis data</span>
+
+    <span class="n">animator_auto</span> <span class="o">=</span> <span class="n">AppendAnimate</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">range_mode</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="c1"># add label of x and y axis.</span>
+    <span class="n">animator_auto</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    <span class="n">animator_auto</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sine Wave&quot;</span><span class="p">)</span>
+    <span class="c1"># animator_auto.show()</span>
+    <span class="n">animator_auto</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;animate_sine_wave_auto.gif&quot;</span><span class="p">)</span>
+
+
+
+    <span class="n">animator_fix</span> <span class="o">=</span> <span class="n">AppendAnimate</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">range_mode</span><span class="o">=</span><span class="s1">&#39;fix&#39;</span><span class="p">)</span>
+    <span class="n">animator_fix</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    <span class="n">animator_fix</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sine Wave&quot;</span><span class="p">)</span>
+    <span class="c1"># animator_fix.show()</span>
+    <span class="n">animator_fix</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;animate_sine_wave_fix.gif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-left" id="id1">
+<a class="reference internal image-reference" href="../_images/animate_sine_wave_auto.gif"><img alt="../_images/animate_sine_wave_auto.gif" src="../_images/animate_sine_wave_auto.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">animate_sine_wave_auto.gif</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-right" id="id2">
+<a class="reference internal image-reference" href="../_images/animate_sine_wave_fix.gif"><img alt="../_images/animate_sine_wave_fix.gif" src="../_images/animate_sine_wave_fix.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">animate_sine_wave_fix.gif</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cum_animate.html" class="btn btn-neutral float-left" title="CumAnimate class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../utils/toc.html" class="btn btn-neutral float-right" title="utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Shusong Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: dev
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="append_animate.html">dev</a></dd>
+      <dd><a href="../../main/animate/append_animate.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

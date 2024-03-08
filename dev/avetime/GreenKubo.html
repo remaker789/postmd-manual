@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GreenKubo &mdash; PostMD Documentation 0.0.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+  <title>GreenKubo class &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
 
   
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PostMD" href="../modules.html" />
-    <link rel="prev" title="AveTime" href="toc.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,15 +47,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="toc.html">AveTime</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GreenKubo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#raw-type-data">raw-type data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#acf-type-data">acf-type data</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">2. Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul>
@@ -75,8 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="toc.html">AveTime</a></li>
-      <li class="breadcrumb-item active">GreenKubo</li>
+      <li class="breadcrumb-item active">GreenKubo class</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/avetime/GreenKubo.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,8 +80,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="greenkubo">
-<h1>GreenKubo<a class="headerlink" href="#greenkubo" title="Permalink to this heading"></a></h1>
+  <section id="greenkubo-class">
+<h1>GreenKubo class<a class="headerlink" href="#greenkubo-class" title="Link to this heading"></a></h1>
 <p>The Green-Kubo formula usually have the following form including an auto-correlation function(ACF) of a certain property,</p>
 <div class="math notranslate nohighlight">
 \[C \int_{0}^{\infty}\left\langle p(0) \cdot p(t) \right\rangle \mathrm{d} t\]</div>
@@ -95,13 +89,13 @@
 <p>For example, the Green-Kubo formula(vscf) for calculate the diffusion coefficient is,</p>
 <div class="math notranslate nohighlight">
 \[D=\frac{1}{3} \int_{0}^{\infty}\left\langle\mathbf{v}^{c}(t) \cdot \mathbf{v}^{c}(0)\right\rangle \mathrm{d} t\]</div>
-<p><strong>The calculation of ACF is central in the Green-Kubo formula</strong>. Here we devide Green-Kubo data into two types: <code class="docutils literal notranslate"><span class="pre">raw</span></code> and <code class="docutils literal notranslate"><span class="pre">acf</span></code>:</p>
+<p><strong>The calculation of ACF is central in the Green-Kubo formula</strong>. We provided <code class="docutils literal notranslate"><span class="pre">postmd.avetime.GreenKubo</span></code> class to help to calculate ACF. Here we devide the generated data from LAMMPS into two types: <code class="docutils literal notranslate"><span class="pre">raw</span></code> and <code class="docutils literal notranslate"><span class="pre">acf</span></code>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">raw</span></code>: just the property <span class="math notranslate nohighlight">\(p\)</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">acf</span></code>: ACF <span class="math notranslate nohighlight">\(\left\langle p(0) \cdot p(t) \right\rangle\)</span>, usually generated from command <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/correlate</span> <span class="pre">type</span> <span class="pre">auto</span> <span class="pre">overwriting</span></code>, see <a class="reference external" href="https://docs.lammps.org/fix_ave_correlate.html">fix ave/correlate</a> command</p></li>
 </ul>
 <section id="raw-type-data">
-<h2>raw-type data<a class="headerlink" href="#raw-type-data" title="Permalink to this heading"></a></h2>
+<h2>raw-type data<a class="headerlink" href="#raw-type-data" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## ================ For raw data ===================</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -138,7 +132,7 @@
 </div>
 </section>
 <section id="acf-type-data">
-<h2>acf-type data<a class="headerlink" href="#acf-type-data" title="Permalink to this heading"></a></h2>
+<h2>acf-type data<a class="headerlink" href="#acf-type-data" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## ================ For autocorrelation data ==================</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -179,10 +173,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="toc.html" class="btn btn-neutral float-left" title="AveTime" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../modules.html" class="btn btn-neutral float-right" title="PostMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
@@ -211,7 +202,7 @@
     <dl>
       <dt>Branches</dt>
       <dd><a href="GreenKubo.html">dev</a></dd>
-      <dd><a href="../../main/index.html">main</a></dd>
+      <dd><a href="../../main/avetime/GreenKubo.html">main</a></dd>
     </dl>
   </div>
 </div><script>

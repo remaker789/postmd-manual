@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postmd.avechunk package &mdash; PostMD Documentation 0.0.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+  <title>postmd.avechunk package &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="postmd.avetime package" href="postmd.avetime.html" />
-    <link rel="prev" title="postmd package" href="postmd.html" /> 
+    <link rel="prev" title="postmd.animate package" href="postmd.animate.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,13 +49,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="avetime/toc.html">AveTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">2. Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">PostMD</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="postmd.html">postmd package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="postmd.html#postmd.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="postmd.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html">postmd.animate package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">postmd.avechunk package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html">postmd.avetime package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a></li>
@@ -61,9 +67,6 @@
 <li class="toctree-l4"><a class="reference internal" href="postmd.utils.html">postmd.utils package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#module-postmd.MDData">postmd.MDData module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#module-postmd">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -96,70 +99,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="postmd-avechunk-package">
-<h1>postmd.avechunk package<a class="headerlink" href="#postmd-avechunk-package" title="Permalink to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-postmd.avechunk.bin1d">
-<span id="postmd-avechunk-bin1d-module"></span><h2>postmd.avechunk.bin1d module<a class="headerlink" href="#module-postmd.avechunk.bin1d" title="Permalink to this heading"></a></h2>
+  <section id="module-postmd.avechunk">
+<span id="postmd-avechunk-package"></span><h1>postmd.avechunk package<a class="headerlink" href="#module-postmd.avechunk" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Bin1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d.apply_function">
-<span class="sig-name descname"><span class="pre">apply_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.apply_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d.apply_function" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d.get_names">
-<span class="sig-name descname"><span class="pre">get_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.get_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d.get_names" title="Permalink to this definition"></a></dt>
-<dd><p>get the names used in dataframe when read files</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>num_line</strong> (<em>int</em>) – the line including the column names of data</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a list of the column names of data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d.read_file">
-<span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_line_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_line_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d.read_file" title="Permalink to this definition"></a></dt>
-<dd><p>read file and return DataFrame</p>
-<blockquote>
-<div><p>There are some default setting in read files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">comment=&quot;#&quot;</span></code> due to the nature of LAMMPS</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sep=&quot;\s+&quot;</span></code> to match all space between data</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> received parameters of read_csv and read_excel, depending on cases</p></li>
-</ul>
-</div></blockquote>
+<dt class="sig sig-object py" id="postmd.avechunk.Bin1d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avechunk.</span></span><span class="sig-name descname"><span class="pre">Bin1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.Bin1d" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="postmd.system.html#postmd.system.mdfile.MDFile" title="postmd.system.mdfile.MDFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDFile</span></code></a></p>
+<p>post-process the file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/chunk</span> <span class="pre">bin1d</span></code> command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em>) – path to the file</p></li>
-<li><p><strong>names</strong> (<em>list</em><em>, </em><em>optional</em>) – list of columns names of data.
-Defaults to None, meaning using the content in num_line of file.</p></li>
-<li><p><strong>num_line_time</strong> (<em>int</em><em>, </em><em>optional</em>) – “# Timestep Number-of-chunks Total-count” For bin/1d. Default=2</p></li>
-<li><p><strong>num_line_column</strong> (<em>int</em><em>, </em><em>optional</em>) – when names=None, the content in line=num_line
-will be used as the column names. Defaults to 3.</p></li>
+<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – path to the file. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>timestep</strong> (<em>float</em><em>, </em><em>optional</em>) – temperature you set in LAMMPS input file. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> [fs].</p></li>
+<li><p><strong>dim</strong> (<em>str</em>) – the dimension of chunk: <code class="docutils literal notranslate"><span class="pre">'x'</span></code>, <code class="docutils literal notranslate"><span class="pre">'y'</span></code> or <code class="docutils literal notranslate"><span class="pre">'z'</span></code>.</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – the chunk size, in Angstrom.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.avechunk.Bin1d.read_file">
+<span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.Bin1d.read_file" title="Link to this definition"></a></dt>
+<dd><p>read file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/chunk</span> <span class="pre">bin1d</span></code> command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> (<em>list</em><em>, </em><em>optional</em>) – a list of data headers.
+Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, means extracting headers from <code class="docutils literal notranslate"><span class="pre">header_line</span></code>.</p></li>
+<li><p><strong>header_line</strong> (<em>int</em><em>, </em><em>optional</em>) – when <code class="docutils literal notranslate"><span class="pre">header=None</span></code>, the content in <code class="docutils literal notranslate"><span class="pre">line=&lt;header_line&gt;</span></code>
+will be used as the headers. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – received parameters of pd.read_csv().</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame object read from the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>There are some default setting in read files:
+- <code class="docutils literal notranslate"><span class="pre">comment=&quot;#&quot;</span></code> in the files generated by <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/time``command</span> <span class="pre">in</span> <span class="pre">LAMMPS.</span>
+<span class="pre">-</span> <span class="pre">``sep=&quot;\s+&quot;</span></code> set the separator to <code class="docutils literal notranslate"><span class="pre">\s+</span></code>, matching one or more whitespace characters.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.avechunk.Bin1d.apply_function">
+<span class="sig-name descname"><span class="pre">apply_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.apply_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.Bin1d.apply_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-postmd.avechunk">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-postmd.avechunk" title="Permalink to this heading"></a></h2>
+<section id="module-postmd.avechunk.bin1d">
+<span id="postmd-avechunk-bin1d-module"></span><h2>postmd.avechunk.bin1d module<a class="headerlink" href="#module-postmd.avechunk.bin1d" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avechunk.bin1d.</span></span><span class="sig-name descname"><span class="pre">Bin1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="postmd.system.html#postmd.system.mdfile.MDFile" title="postmd.system.mdfile.MDFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDFile</span></code></a></p>
+<p>post-process the file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/chunk</span> <span class="pre">bin1d</span></code> command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – path to the file. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>timestep</strong> (<em>float</em><em>, </em><em>optional</em>) – temperature you set in LAMMPS input file. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> [fs].</p></li>
+<li><p><strong>dim</strong> (<em>str</em>) – the dimension of chunk: <code class="docutils literal notranslate"><span class="pre">'x'</span></code>, <code class="docutils literal notranslate"><span class="pre">'y'</span></code> or <code class="docutils literal notranslate"><span class="pre">'z'</span></code>.</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – the chunk size, in Angstrom.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d.read_file">
+<span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d.read_file" title="Link to this definition"></a></dt>
+<dd><p>read file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/chunk</span> <span class="pre">bin1d</span></code> command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> (<em>list</em><em>, </em><em>optional</em>) – a list of data headers.
+Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, means extracting headers from <code class="docutils literal notranslate"><span class="pre">header_line</span></code>.</p></li>
+<li><p><strong>header_line</strong> (<em>int</em><em>, </em><em>optional</em>) – when <code class="docutils literal notranslate"><span class="pre">header=None</span></code>, the content in <code class="docutils literal notranslate"><span class="pre">line=&lt;header_line&gt;</span></code>
+will be used as the headers. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – received parameters of pd.read_csv().</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame object read from the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>There are some default setting in read files:
+- <code class="docutils literal notranslate"><span class="pre">comment=&quot;#&quot;</span></code> in the files generated by <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/time``command</span> <span class="pre">in</span> <span class="pre">LAMMPS.</span>
+<span class="pre">-</span> <span class="pre">``sep=&quot;\s+&quot;</span></code> set the separator to <code class="docutils literal notranslate"><span class="pre">\s+</span></code>, matching one or more whitespace characters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="postmd.avechunk.bin1d.Bin1d.apply_function">
+<span class="sig-name descname"><span class="pre">apply_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avechunk/bin1d.html#Bin1d.apply_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avechunk.bin1d.Bin1d.apply_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -167,7 +211,7 @@ will be used as the column names. Defaults to 3.</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="postmd.html" class="btn btn-neutral float-left" title="postmd package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="postmd.animate.html" class="btn btn-neutral float-left" title="postmd.animate package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="postmd.avetime.html" class="btn btn-neutral float-right" title="postmd.avetime package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

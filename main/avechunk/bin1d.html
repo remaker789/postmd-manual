@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bin1d class &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animate package" href="../animate/toc.html" />
+    <link rel="prev" title="avechunk package" href="toc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PostMD Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">2. Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../avetime/toc.html">avetime package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="toc.html">avechunk package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bin1d class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../animate/toc.html">animate package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/toc.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">PostMD</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PostMD Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html"><span class="section-number">2. </span>Usage</a></li>
+          <li class="breadcrumb-item"><a href="toc.html">avechunk package</a></li>
+      <li class="breadcrumb-item active">Bin1d class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/avechunk/bin1d.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bin1d-class">
+<h1>Bin1d class<a class="headerlink" href="#bin1d-class" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">postmd.avechunk.Bin1d()</span></code> class is to process the file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/chunk</span> <span class="pre">bin1d</span></code> command in LAMMPS.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">postmd.avechunk</span> <span class="kn">import</span> <span class="n">Bin1d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;tests/data/ave_chunk_bin1d.dat&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bin1d</span> <span class="o">=</span> <span class="n">Bin1d</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="go">You are processing the file: &#39;D:\Onedrive\Github\MyRepos\PostMD\tests\data\ave_chunk_bin1d.dat&#39;</span>
+<span class="go">&#39;D:\Onedrive\Github\MyRepos\PostMD\tests\data\ave_chunk_bin1d.dat&#39; is generated by command &#39;fix ave/chunk&#39;</span>
+<span class="go">The first line is: Chunk-averaged data for fix slab_y_free_ion and group vx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bin1d</span><span class="o">.</span><span class="n">read_file</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We stored the blocks in a list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of bin1d.blocks is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">bin1d</span><span class="o">.</span><span class="n">_blocks</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">The type of bin1d.blocks is &lt;class &#39;list&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># you can use len(bin1d) to get the number of blocks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bin1d</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> have </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bin1d</span><span class="p">)</span><span class="si">}</span><span class="s2"> blocks&quot;</span><span class="p">)</span>
+<span class="go">D:\Onedrive\Github\MyRepos\PostMD\tests\data\ave_chunk_bin1d.dat have 10 blocks</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># you can use bin1d[index] to access index-th block</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># in each block, we store the information with dict.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first block is:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">bin1d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">The first block is:</span>
+<span class="go">{&#39;step&#39;: 1000000, &#39;nchunk&#39;: 800, &#39;total_count&#39;: 1.0, &#39;data&#39;:      Chunk  Coord1  Ncount  density/number   vx   vy   vz</span>
+<span class="go">0        1  -39.95     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">1        2  -39.85     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">2        3  -39.75     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">3        4  -39.65     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">4        5  -39.55     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">..     ...     ...     ...             ...  ...  ...  ...</span>
+<span class="go">795    796   39.55     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">796    797   39.65     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">797    798   39.75     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">798    799   39.85     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">799    800   39.95     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">[800 rows x 7 columns]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># you can use key to access the data in each block</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The data in the first block is:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">bin1d</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+<span class="go">The data in the first block is:</span>
+<span class="go">    Chunk  Coord1  Ncount  density/number   vx   vy   vz</span>
+<span class="go">0        1  -39.95     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">1        2  -39.85     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">2        3  -39.75     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">3        4  -39.65     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">4        5  -39.55     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">..     ...     ...     ...             ...  ...  ...  ...</span>
+<span class="go">795    796   39.55     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">796    797   39.65     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">797    798   39.75     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">798    799   39.85     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">799    800   39.95     0.0             0.0  0.0  0.0  0.0</span>
+<span class="go">[800 rows x 7 columns]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="toc.html" class="btn btn-neutral float-left" title="avechunk package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../animate/toc.html" class="btn btn-neutral float-right" title="animate package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Shusong Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../dev/avechunk/bin1d.html">dev</a></dd>
+      <dd><a href="bin1d.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postmd.utils package &mdash; PostMD Documentation 0.0.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+  <title>postmd.utils package &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,13 +48,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="avetime/toc.html">AveTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">2. Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">PostMD</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="postmd.html">postmd package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="postmd.html#postmd.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="postmd.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html">postmd.animate package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html">postmd.avechunk package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html">postmd.avetime package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a></li>
@@ -60,9 +66,6 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">postmd.utils package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#module-postmd.MDData">postmd.MDData module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#module-postmd">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -95,17 +98,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="postmd-utils-package">
-<h1>postmd.utils package<a class="headerlink" href="#postmd-utils-package" title="Permalink to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-postmd.utils.utils">
-<span id="postmd-utils-utils-module"></span><h2>postmd.utils.utils module<a class="headerlink" href="#module-postmd.utils.utils" title="Permalink to this heading"></a></h2>
+  <section id="module-postmd.utils">
+<span id="postmd-utils-package"></span><h1>postmd.utils package<a class="headerlink" href="#module-postmd.utils" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.cal_box_length">
-<span class="sig-name descname"><span class="pre">cal_box_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cal_box_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.cal_box_length" title="Permalink to this definition"></a></dt>
-<dd><p>calculate the length of a cubic water box</p>
+<dt class="sig sig-object py" id="postmd.utils.average_replicates">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">average_replicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_arrays</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#average_replicates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.average_replicates" title="Link to this definition"></a></dt>
+<dd><p>average the data from replicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_arrays</strong> (<em>list</em><em> or </em><em>np.ndarray</em>) – a list of data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the averaged data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">postmd.utils</span> <span class="kn">import</span> <span class="n">average_replicates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_arrays</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">]),</span>  <span class="c1"># First dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">]),</span>  <span class="c1"># Second dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">]),</span>   <span class="c1"># Third dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the average of each dataset (i.e., each array).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">average</span> <span class="o">=</span> <span class="n">average_replicates</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Averages of replicates: </span><span class="si">{</span><span class="n">average</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">Averages of replicates: [4.33333333 5.43333333 4.6        4.96666667 5.        ]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.cal_box_length">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">cal_box_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NA</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cal_box_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.cal_box_length" title="Link to this definition"></a></dt>
+<dd><p>calculate the length of a cubic water box.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The built-in Avogadro constant in LAMMPS (units real or metal) is 6.02214129e23, see lammps/src/update.cpp, they write “force-&gt;mv2d = 1.0 / 0.602214129” for units real and units metal. <strong>However, we defalutly used the Avogadro constant in scipy.constants is 6.022140857e23, which is the international standard.</strong></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -120,23 +153,49 @@
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">cal_box_length</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="go">The length of a cubic water box for 1000 water molecules and 1.0 g/cm^3 is 31.043047 Angstrom</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.create_path">
-<span class="sig-name descname"><span class="pre">create_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#create_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.create_path" title="Permalink to this definition"></a></dt>
-<dd><p>创建路径为path的文件夹。如果文件夹已存在，则将原文件夹备份，并添加.bkXXX后缀</p>
+<dt class="sig sig-object py" id="postmd.utils.create_dir">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">create_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#create_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.create_dir" title="Link to this definition"></a></dt>
+<dd><p>Create a directory at the specified ‘path’. If the directory already exists and ‘backup’ is True, rename the original directory by appending ‘.bkXXX’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>_type_</em>) – _description_</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path of the directory to be created.</p></li>
+<li><p><strong>backup</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to back up an existing directory. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>
+<span class="go">[&#39;createdir.py&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># create a new &quot;test&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># move orgin &quot;test&quot; dir to &quot;test.bk000&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;, &#39;test.bk000&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># move orgin &quot;test&quot; dir to &quot;test.bk001&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;, &#39;test.bk000&#39;, &#39;test.bk001&#39;]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.cum_ave">
-<span class="sig-name descname"><span class="pre">cum_ave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cum_ave"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.cum_ave" title="Permalink to this definition"></a></dt>
-<dd><p>calculate the cumulative average</p>
+<dt class="sig sig-object py" id="postmd.utils.cumave">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">cumave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cumave"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.cumave" title="Link to this definition"></a></dt>
+<dd><p>calculate the cumulative average.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>1d list</em>) – the data need to do the cumulative average</p>
@@ -148,23 +207,21 @@
 <dd class="field-odd"><p>np.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="go">[0 1 2 3 4 5 6 7 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">cumave</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="go">array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. ])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.judge_dir">
-<span class="sig-name descname"><span class="pre">judge_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.judge_dir" title="Permalink to this definition"></a></dt>
-<dd><p>judge whether the path of object is accessable.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.judge_file">
-<span class="sig-name descname"><span class="pre">judge_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.judge_file" title="Permalink to this definition"></a></dt>
-<dd><p>judge whether the path of object is accessable.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="postmd.utils.utils.stat_bin">
-<span class="sig-name descname"><span class="pre">stat_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#stat_bin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.stat_bin" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.utils.stat_bin">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">stat_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#stat_bin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.stat_bin" title="Link to this definition"></a></dt>
 <dd><p>statistic the mean and standard deviation(ddof=0) of x and y in each bin.
 Here we used the [scipy.stats.binned_statistic](<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html</a>) function.</p>
 <dl class="field-list simple">
@@ -172,22 +229,190 @@ Here we used the [scipy.stats.binned_statistic](<a class="reference external" hr
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – (N,) array_like. A sequence of values to be binned.</p></li>
 <li><p><strong>y</strong> – (N,) array_like. The data on which the statistic will be computed. This must be the same shape as x, or a set of sequences - each the same shape as x. If values is a set of sequences, the statistic will be computed on each independently.</p></li>
-<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the given range (10 by default). If bins is a sequence, it defines the bin edges, including the rightmost edge, allowing for non-uniform bin widths. Values in x that are smaller than lowest bin edge are assigned to bin number 0, values beyond the highest bin are assigned to bins[-1]. If the bin edges are specified, the number of bins will be, (nx = len(bins)-1). Defaults to 10.</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence</em><em> of </em><em>scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the given range (10 by default). If bins is a sequence, it defines the bin edges, including the rightmost edge, allowing for non-uniform bin widths. Values in x that are smaller than lowest bin edge are assigned to bin number 0, values beyond the highest bin are assigned to bins[-1]. If the bin edges are specified, the number of bins will be, (nx = len(bins)-1). Defaults to 10.</p></li>
 <li><p><strong>range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>]</em><em>, </em><em>optional</em>) – The lower and upper range of the bins. If not provided, range is simply (x.min(), x.max()). Values outside the range are ignored. Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>_description_</p>
+<dd class="field-even"><p>(x_mean, x_std, y_mean, y_std)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>_type_</p>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.judge_file">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">judge_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.judge_file" title="Link to this definition"></a></dt>
+<dd><p>judge whether the path is a file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.judge_dir">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.</span></span><span class="sig-name descname"><span class="pre">judge_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.judge_dir" title="Link to this definition"></a></dt>
+<dd><p>judge whether the path is a folder.</p>
+</dd></dl>
+
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-postmd.utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-postmd.utils" title="Permalink to this heading"></a></h2>
+<section id="module-postmd.utils.utils">
+<span id="postmd-utils-utils-module"></span><h2>postmd.utils.utils module<a class="headerlink" href="#module-postmd.utils.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.average_replicates">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">average_replicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_arrays</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#average_replicates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.average_replicates" title="Link to this definition"></a></dt>
+<dd><p>average the data from replicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_arrays</strong> (<em>list</em><em> or </em><em>np.ndarray</em>) – a list of data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the averaged data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">postmd.utils</span> <span class="kn">import</span> <span class="n">average_replicates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_arrays</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">]),</span>  <span class="c1"># First dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">]),</span>  <span class="c1"># Second dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">]),</span>   <span class="c1"># Third dataset</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the average of each dataset (i.e., each array).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">average</span> <span class="o">=</span> <span class="n">average_replicates</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Averages of replicates: </span><span class="si">{</span><span class="n">average</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">Averages of replicates: [4.33333333 5.43333333 4.6        4.96666667 5.        ]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.cal_box_length">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">cal_box_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NA</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cal_box_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.cal_box_length" title="Link to this definition"></a></dt>
+<dd><p>calculate the length of a cubic water box.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The built-in Avogadro constant in LAMMPS (units real or metal) is 6.02214129e23, see lammps/src/update.cpp, they write “force-&gt;mv2d = 1.0 / 0.602214129” for units real and units metal. <strong>However, we defalutly used the Avogadro constant in scipy.constants is 6.022140857e23, which is the international standard.</strong></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>int</em>) – the number of water molecules.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em>, </em><em>optional</em>) – the density of water, in g/cm^3. Defaults to 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the length of a cubic water box, in Angstrom</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">cal_box_length</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="go">The length of a cubic water box for 1000 water molecules and 1.0 g/cm^3 is 31.043047 Angstrom</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.create_dir">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">create_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#create_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.create_dir" title="Link to this definition"></a></dt>
+<dd><p>Create a directory at the specified ‘path’. If the directory already exists and ‘backup’ is True, rename the original directory by appending ‘.bkXXX’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path of the directory to be created.</p></li>
+<li><p><strong>backup</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to back up an existing directory. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>
+<span class="go">[&#39;createdir.py&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># create a new &quot;test&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># move orgin &quot;test&quot; dir to &quot;test.bk000&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;, &#39;test.bk000&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>      <span class="c1"># move orgin &quot;test&quot; dir to &quot;test.bk001&quot; dir</span>
+<span class="go">[&#39;createdir.py&#39;, &#39;test&#39;, &#39;test.bk000&#39;, &#39;test.bk001&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.cumave">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">cumave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#cumave"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.cumave" title="Link to this definition"></a></dt>
+<dd><p>calculate the cumulative average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>1d list</em>) – the data need to do the cumulative average</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the cumulative average</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">postmd.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="go">[0 1 2 3 4 5 6 7 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">cumave</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="go">array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.stat_bin">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">stat_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#stat_bin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.stat_bin" title="Link to this definition"></a></dt>
+<dd><p>statistic the mean and standard deviation(ddof=0) of x and y in each bin.
+Here we used the [scipy.stats.binned_statistic](<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html</a>) function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – (N,) array_like. A sequence of values to be binned.</p></li>
+<li><p><strong>y</strong> – (N,) array_like. The data on which the statistic will be computed. This must be the same shape as x, or a set of sequences - each the same shape as x. If values is a set of sequences, the statistic will be computed on each independently.</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence</em><em> of </em><em>scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the given range (10 by default). If bins is a sequence, it defines the bin edges, including the rightmost edge, allowing for non-uniform bin widths. Values in x that are smaller than lowest bin edge are assigned to bin number 0, values beyond the highest bin are assigned to bins[-1]. If the bin edges are specified, the number of bins will be, (nx = len(bins)-1). Defaults to 10.</p></li>
+<li><p><strong>range</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>) or </em><em>[</em><em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>]</em><em>, </em><em>optional</em>) – The lower and upper range of the bins. If not provided, range is simply (x.min(), x.max()). Values outside the range are ignored. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x_mean, x_std, y_mean, y_std)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.judge_file">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">judge_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.judge_file" title="Link to this definition"></a></dt>
+<dd><p>judge whether the path is a file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postmd.utils.utils.judge_dir">
+<span class="sig-prename descclassname"><span class="pre">postmd.utils.utils.</span></span><span class="sig-name descname"><span class="pre">judge_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/utils/utils.html#judge_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.utils.utils.judge_dir" title="Link to this definition"></a></dt>
+<dd><p>judge whether the path is a folder.</p>
+</dd></dl>
+
 </section>
 </section>
 

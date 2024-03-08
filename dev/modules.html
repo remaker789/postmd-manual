@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PostMD &mdash; PostMD Documentation 0.0.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+  <title>PostMD &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="postmd package" href="postmd.html" />
-    <link rel="prev" title="GreenKubo" href="avetime/GreenKubo.html" /> 
+    <link rel="prev" title="utils package" href="utils/toc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +49,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="avetime/toc.html">AveTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">2. Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul class="current">
@@ -81,52 +85,66 @@
            <div itemprop="articleBody">
              
   <section id="postmd">
-<h1>PostMD<a class="headerlink" href="#postmd" title="Permalink to this heading"></a></h1>
+<h1>PostMD<a class="headerlink" href="#postmd" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="postmd.html">postmd package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="postmd.html#postmd.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postmd.html#postmd.MDFile.read_file"><code class="docutils literal notranslate"><span class="pre">MDFile.read_file()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="postmd.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postmd.animate.html">postmd.animate package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#postmd.animate.AppendAnimate"><code class="docutils literal notranslate"><span class="pre">AppendAnimate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#postmd.animate.CumAnimate"><code class="docutils literal notranslate"><span class="pre">CumAnimate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#module-postmd.animate.animate">postmd.animate.animate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#module-postmd.animate.append_animate">postmd.animate.append_animate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.animate.html#module-postmd.animate.cum_animate">postmd.animate.cum_animate module</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="postmd.avechunk.html">postmd.avechunk package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html#postmd.avechunk.Bin1d"><code class="docutils literal notranslate"><span class="pre">Bin1d</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html#module-postmd.avechunk.bin1d">postmd.avechunk.bin1d module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html#module-postmd.avechunk">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="postmd.avetime.html">postmd.avetime package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#postmd.avetime.AveTime"><code class="docutils literal notranslate"><span class="pre">AveTime</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#postmd.avetime.GreenKubo"><code class="docutils literal notranslate"><span class="pre">GreenKubo</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#module-postmd.avetime.avetime">postmd.avetime.avetime module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#module-postmd.avetime.greenkubo">postmd.avetime.greenkubo module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html#module-postmd.avetime">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="postmd.dump.html#module-postmd.dump">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="postmd.log.html">postmd.log package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.log.html#postmd.log.LogFile"><code class="docutils literal notranslate"><span class="pre">LogFile</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.log.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.log.html#module-postmd.log.dir">postmd.log.dir module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.log.html#module-postmd.log.logfile">postmd.log.logfile module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.log.html#module-postmd.log">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="postmd.system.html">postmd.system package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.system.html#postmd.system.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.system.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.system.html#module-postmd.system.system">postmd.system.system module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.system.html#module-postmd.system">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.system.html#module-postmd.system.mdfile">postmd.system.mdfile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="postmd.utils.html">postmd.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.average_replicates"><code class="docutils literal notranslate"><span class="pre">average_replicates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.cal_box_length"><code class="docutils literal notranslate"><span class="pre">cal_box_length()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.create_dir"><code class="docutils literal notranslate"><span class="pre">create_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.cumave"><code class="docutils literal notranslate"><span class="pre">cumave()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.stat_bin"><code class="docutils literal notranslate"><span class="pre">stat_bin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.judge_file"><code class="docutils literal notranslate"><span class="pre">judge_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#postmd.utils.judge_dir"><code class="docutils literal notranslate"><span class="pre">judge_dir()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#module-postmd.utils.utils">postmd.utils.utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postmd.utils.html#module-postmd.utils">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="postmd.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="postmd.html#module-postmd.MDData">postmd.MDData module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="postmd.html#module-postmd">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -137,7 +155,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="avetime/GreenKubo.html" class="btn btn-neutral float-left" title="GreenKubo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils/toc.html" class="btn btn-neutral float-left" title="utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="postmd.html" class="btn btn-neutral float-right" title="postmd package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

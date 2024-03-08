@@ -10,10 +10,12 @@ Welcome to PostMD Documentation!
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: USER GUIDE
-
-   avetime/toc
+   :numbered: 1
+   
+   install
+   usage
 
 
 .. toctree::

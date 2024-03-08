@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>animate package &mdash; PostMD Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CumAnimate class" href="cum_animate.html" />
+    <link rel="prev" title="Bin1d class" href="../avechunk/bin1d.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PostMD Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">USER GUIDE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">2. Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../avetime/toc.html">avetime package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../avechunk/toc.html">avechunk package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">animate package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cum_animate.html">CumAnimate class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="append_animate.html">AppendAnimate class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customize">Customize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/toc.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">PostMD</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PostMD Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html"><span class="section-number">2. </span>Usage</a></li>
+      <li class="breadcrumb-item active">animate package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/animate/toc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="animate-package">
+<h1>animate package<a class="headerlink" href="#animate-package" title="Link to this heading"></a></h1>
+<p>We built <code class="docutils literal notranslate"><span class="pre">postmd.animate</span></code> subpackage to help to animate the data. This subpackage
+is based on the <code class="docutils literal notranslate"><span class="pre">matplotlib.animation.FuncAnimation</span></code> class.</p>
+<p>We provided two methods to preview and save the animation.
+- <code class="docutils literal notranslate"><span class="pre">show()</span></code>: preview the animation.
+- <code class="docutils literal notranslate"><span class="pre">save()</span></code>: save the animation to a file(<code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">mp4</span></code>, or <code class="docutils literal notranslate"><span class="pre">avi</span></code>).</p>
+<p>We provide two derived classes: <code class="docutils literal notranslate"><span class="pre">AppendAnimate</span></code> and <code class="docutils literal notranslate"><span class="pre">CumAnimate</span></code>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cum_animate.html">CumAnimate class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append_animate.html">AppendAnimate class</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have initialized <code class="docutils literal notranslate"><span class="pre">self.fig,</span> <span class="pre">self.ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code> in the base class <code class="docutils literal notranslate"><span class="pre">Animate</span></code>.
+Therefore, you can use <code class="docutils literal notranslate"><span class="pre">self.fig</span></code> and <code class="docutils literal notranslate"><span class="pre">self.ax</span></code> to customize the figure of animation.
+See <a class="reference internal" href="append_animate.html#append-animate-example"><span class="std std-ref">Example</span></a> for more details.</p>
+</div>
+<section id="customize">
+<h2>Customize<a class="headerlink" href="#customize" title="Link to this heading"></a></h2>
+<p>The Base class is <code class="docutils literal notranslate"><span class="pre">Animate</span></code> class. The following method may be overrided in the derived class:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_init(self)</span></code>: initialize the data in <code class="docutils literal notranslate"><span class="pre">self.ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_update_data(self,n)</span></code>: tell <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> how to update the data in <code class="docutils literal notranslate"><span class="pre">self.ax</span></code>. <code class="docutils literal notranslate"><span class="pre">n</span></code> means the n-th frame in the animation. Should return <code class="docutils literal notranslate"><span class="pre">(xdata,ydata)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_update_frame(self,n)</span></code>: tell <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> how to update the frame in the animation. <code class="docutils literal notranslate"><span class="pre">n</span></code> means the n-th frame in the animation. <strong>Usually, there is no need to override this method.</strong></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../avechunk/bin1d.html" class="btn btn-neutral float-left" title="Bin1d class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cum_animate.html" class="btn btn-neutral float-right" title="CumAnimate class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Shusong Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: dev
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="toc.html">dev</a></dd>
+      <dd><a href="../../main/animate/toc.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
