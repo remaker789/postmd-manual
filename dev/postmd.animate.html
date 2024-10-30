@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="postmd.avechunk package" href="postmd.avechunk.html" />
-    <link rel="prev" title="postmd package" href="postmd.html" /> 
+    <link rel="prev" title="postmd.analysis package" href="postmd.analysis.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,15 +54,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">PostMD</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">postmd</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="postmd.html">postmd package</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#postmd.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="postmd.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="postmd.analysis.html">postmd.analysis package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">postmd.animate package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html">postmd.avechunk package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avetime.html">postmd.avetime package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.log.html">postmd.log package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.plumed.html">postmd.plumed package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.system.html">postmd.system package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.utils.html">postmd.utils package</a></li>
 </ul>
@@ -87,7 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">PostMD</a></li>
+          <li class="breadcrumb-item"><a href="modules.html">postmd</a></li>
           <li class="breadcrumb-item"><a href="postmd.html">postmd package</a></li>
       <li class="breadcrumb-item active">postmd.animate package</li>
       <li class="wy-breadcrumbs-aside">
@@ -103,8 +104,8 @@
 <span id="postmd-animate-package"></span><h1>postmd.animate package<a class="headerlink" href="#module-postmd.animate" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="postmd.animate.AppendAnimate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.</span></span><span class="sig-name descname"><span class="pre">AppendAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.Animate" title="postmd.animate.animate.Animate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animate</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.</span></span><span class="sig-name descname"><span class="pre">AppendAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.BaseAnimate" title="postmd.animate.animate.BaseAnimate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnimate</span></code></a></p>
 <p>animate data by appending data to the figure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -120,13 +121,13 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="postmd.animate.AppendAnimate.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.show" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.show" title="Link to this definition"></a></dt>
 <dd><p>show the animation of data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="postmd.animate.AppendAnimate.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.save" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.AppendAnimate.save" title="Link to this definition"></a></dt>
 <dd><p>save the animation of data to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -142,8 +143,8 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="postmd.animate.CumAnimate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.</span></span><span class="sig-name descname"><span class="pre">CumAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.Animate" title="postmd.animate.animate.Animate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animate</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.</span></span><span class="sig-name descname"><span class="pre">CumAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.BaseAnimate" title="postmd.animate.animate.BaseAnimate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnimate</span></code></a></p>
 <p>The cumulative animation of a set of data, which is usually for show the change of data with number of experiments or cumulative average.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -163,13 +164,13 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="postmd.animate.CumAnimate.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate.show" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate.show" title="Link to this definition"></a></dt>
 <dd><p>show the animation of data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="postmd.animate.CumAnimate.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate.save" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.CumAnimate.save" title="Link to this definition"></a></dt>
 <dd><p>save the animation of data to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -189,18 +190,18 @@
 <section id="module-postmd.animate.animate">
 <span id="postmd-animate-animate-module"></span><h2>postmd.animate.animate module<a class="headerlink" href="#module-postmd.animate.animate" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="postmd.animate.animate.Animate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.animate.</span></span><span class="sig-name descname"><span class="pre">Animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#Animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.Animate" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.BaseAnimate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.animate.</span></span><span class="sig-name descname"><span class="pre">BaseAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#BaseAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.BaseAnimate" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.animate.Animate.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#Animate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.Animate.show" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.BaseAnimate.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#BaseAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.BaseAnimate.show" title="Link to this definition"></a></dt>
 <dd><p>show the animation of data.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.animate.Animate.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#Animate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.Animate.save" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.BaseAnimate.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#BaseAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.BaseAnimate.save" title="Link to this definition"></a></dt>
 <dd><p>save the animation of data to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -214,13 +215,10 @@
 
 </dd></dl>
 
-</section>
-<section id="module-postmd.animate.append_animate">
-<span id="postmd-animate-append-animate-module"></span><h2>postmd.animate.append_animate module<a class="headerlink" href="#module-postmd.animate.append_animate" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="postmd.animate.append_animate.AppendAnimate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.append_animate.</span></span><span class="sig-name descname"><span class="pre">AppendAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.append_animate.AppendAnimate" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.Animate" title="postmd.animate.animate.Animate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animate</span></code></a></p>
+<dt class="sig sig-object py" id="postmd.animate.animate.AppendAnimate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.animate.</span></span><span class="sig-name descname"><span class="pre">AppendAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.AppendAnimate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.BaseAnimate" title="postmd.animate.animate.BaseAnimate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnimate</span></code></a></p>
 <p>animate data by appending data to the figure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -235,14 +233,14 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.append_animate.AppendAnimate.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.append_animate.AppendAnimate.show" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.AppendAnimate.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.AppendAnimate.show" title="Link to this definition"></a></dt>
 <dd><p>show the animation of data.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.append_animate.AppendAnimate.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/append_animate.html#AppendAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.append_animate.AppendAnimate.save" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.AppendAnimate.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#AppendAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.AppendAnimate.save" title="Link to this definition"></a></dt>
 <dd><p>save the animation of data to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -256,13 +254,10 @@
 
 </dd></dl>
 
-</section>
-<section id="module-postmd.animate.cum_animate">
-<span id="postmd-animate-cum-animate-module"></span><h2>postmd.animate.cum_animate module<a class="headerlink" href="#module-postmd.animate.cum_animate" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="postmd.animate.cum_animate.CumAnimate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.cum_animate.</span></span><span class="sig-name descname"><span class="pre">CumAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.cum_animate.CumAnimate" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.Animate" title="postmd.animate.animate.Animate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animate</span></code></a></p>
+<dt class="sig sig-object py" id="postmd.animate.animate.CumAnimate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.animate.animate.</span></span><span class="sig-name descname"><span class="pre">CumAnimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.CumAnimate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#postmd.animate.animate.BaseAnimate" title="postmd.animate.animate.BaseAnimate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnimate</span></code></a></p>
 <p>The cumulative animation of a set of data, which is usually for show the change of data with number of experiments or cumulative average.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -281,14 +276,14 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.cum_animate.CumAnimate.show">
-<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.cum_animate.CumAnimate.show" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.CumAnimate.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.CumAnimate.show" title="Link to this definition"></a></dt>
 <dd><p>show the animation of data.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.animate.cum_animate.CumAnimate.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/cum_animate.html#CumAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.cum_animate.CumAnimate.save" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.animate.animate.CumAnimate.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/animate/animate.html#CumAnimate.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.animate.animate.CumAnimate.save" title="Link to this definition"></a></dt>
 <dd><p>save the animation of data to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -309,7 +304,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="postmd.html" class="btn btn-neutral float-left" title="postmd package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="postmd.analysis.html" class="btn btn-neutral float-left" title="postmd.analysis package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="postmd.avechunk.html" class="btn btn-neutral float-right" title="postmd.avechunk package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -54,15 +54,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">PostMD</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">postmd</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="postmd.html">postmd package</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="postmd.html#postmd.MDFile"><code class="docutils literal notranslate"><span class="pre">MDFile</span></code></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="postmd.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="postmd.analysis.html">postmd.analysis package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.animate.html">postmd.animate package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.avechunk.html">postmd.avechunk package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">postmd.avetime package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.dump.html">postmd.dump package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.log.html">postmd.log package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="postmd.plumed.html">postmd.plumed package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.system.html">postmd.system package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postmd.utils.html">postmd.utils package</a></li>
 </ul>
@@ -87,7 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">PostMD</a></li>
+          <li class="breadcrumb-item"><a href="modules.html">postmd</a></li>
           <li class="breadcrumb-item"><a href="postmd.html">postmd package</a></li>
       <li class="breadcrumb-item active">postmd.avetime package</li>
       <li class="wy-breadcrumbs-aside">
@@ -99,122 +100,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-postmd.avetime">
-<span id="postmd-avetime-package"></span><h1>postmd.avetime package<a class="headerlink" href="#module-postmd.avetime" title="Link to this heading"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="postmd.avetime.AveTime">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avetime.</span></span><span class="sig-name descname"><span class="pre">AveTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#AveTime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.AveTime" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="postmd.system.html#postmd.system.mdfile.MDFile" title="postmd.system.mdfile.MDFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDFile</span></code></a></p>
-<p>process the data generated from “fix ave/time” command in LAMMPS
-(see <a class="reference external" href="https://docs.lammps.org/fix_ave_time.html">https://docs.lammps.org/fix_ave_time.html</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – path to the file. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>timestep</strong> (<em>float</em><em>, </em><em>optional</em>) – temperature you set in LAMMPS input file. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> [fs].</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.AveTime.read_file">
-<span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#AveTime.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.AveTime.read_file" title="Link to this definition"></a></dt>
-<dd><p>read file generated from <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/time</span></code> command.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>header</strong> (<em>list</em><em>, </em><em>optional</em>) – a list of data headers.
-Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, means extracting headers from <code class="docutils literal notranslate"><span class="pre">header_line</span></code>.</p></li>
-<li><p><strong>header_line</strong> (<em>int</em><em>, </em><em>optional</em>) – when <code class="docutils literal notranslate"><span class="pre">header=None</span></code>, the content in <code class="docutils literal notranslate"><span class="pre">line=&lt;header_line&gt;</span></code>
-will be used as the headers. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
-<li><p><strong>**kwargs</strong> – received parameters of pd.read_csv().</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>DataFrame object read from the file.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>There are some default setting in read files:
-- <code class="docutils literal notranslate"><span class="pre">comment=&quot;#&quot;</span></code> in the files generated by <code class="docutils literal notranslate"><span class="pre">fix</span> <span class="pre">ave/time``command</span> <span class="pre">in</span> <span class="pre">LAMMPS.</span>
-<span class="pre">-</span> <span class="pre">``sep=&quot;\s+&quot;</span></code> set the separator to <code class="docutils literal notranslate"><span class="pre">\s+</span></code>, matching one or more whitespace characters.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="postmd.avetime.GreenKubo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avetime.</span></span><span class="sig-name descname"><span class="pre">GreenKubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.GreenKubo" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#postmd.avetime.avetime.AveTime" title="postmd.avetime.avetime.AveTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">AveTime</span></code></a></p>
-<p>calculate the auto-correlation function (acf) and corresponding integration
-for Green-Kubo formula. But you need to pay attention to the true equation of
-Green-Kubo formula, because this script just do the integration of acf, not
-including other parts, like multiply or divide by some properties.</p>
-<p>process the data generated from “fix ave/time” command in LAMMPS
-(see <a class="reference external" href="https://docs.lammps.org/fix_ave_time.html">https://docs.lammps.org/fix_ave_time.html</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – path to the file. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>timestep</strong> (<em>float</em><em>, </em><em>optional</em>) – temperature you set in LAMMPS input file. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> [fs].</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.GreenKubo.cal_acf">
-<span class="sig-name descname"><span class="pre">cal_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.cal_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.GreenKubo.cal_acf" title="Link to this definition"></a></dt>
-<dd><p>calculate the acf from data file and store in <code class="docutils literal notranslate"><span class="pre">self.nlag</span></code> and <code class="docutils literal notranslate"><span class="pre">self.acf</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_type</strong> (<em>str</em><em>, </em><em>optional</em>) – the data type of self.data (raw or acf). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;raw&quot;</span></code>.</p></li>
-<li><p><strong>col</strong> (<em>int</em><em>, </em><em>optional</em>) – the column number(start from 0) of data to process in self.data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>nlag</strong> (<em>int</em><em>, </em><em>optional</em>) – Limit the number of autocovariances returned.  Size of returned array is nlag + 1. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>nlag_col</strong> (<em>int</em><em>, </em><em>optional</em>) – the column number(start from <code class="docutils literal notranslate"><span class="pre">0</span></code>) of nlag in data, usually named “TimeDelta”. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p><strong>unit_trans</strong> (<em>float</em><em>, </em><em>optional</em>) – transform the unit of property to SI unit. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.GreenKubo.integrate_acf">
-<span class="sig-name descname"><span class="pre">integrate_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simpson'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.integrate_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.GreenKubo.integrate_acf" title="Link to this definition"></a></dt>
-<dd><p>Integrate the acf data to the Green-Kubo formula and store in <code class="docutils literal notranslate"><span class="pre">self.int_acf</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nlag</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – the nlag data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>acf</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – the acf data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – the integration method (<code class="docutils literal notranslate"><span class="pre">&quot;simpson&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;trap&quot;</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;simpson&quot;</span></code>.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.GreenKubo.write_result">
-<span class="sig-name descname"><span class="pre">write_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gk.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.write_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.GreenKubo.write_result" title="Link to this definition"></a></dt>
-<dd><p>write the data of nlag, acf and integration of acf to file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – the filename for output. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;gk.csv&quot;</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.GreenKubo.finite_size_correct_friction_coeff">
-<span class="sig-name descname"><span class="pre">finite_size_correct_friction_coeff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.finite_size_correct_friction_coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.GreenKubo.finite_size_correct_friction_coeff" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <section id="postmd-avetime-package">
+<h1>postmd.avetime package<a class="headerlink" href="#postmd-avetime-package" title="Link to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
@@ -263,12 +150,9 @@ will be used as the headers. Defaults to <code class="docutils literal notransla
 
 </dd></dl>
 
-</section>
-<section id="module-postmd.avetime.greenkubo">
-<span id="postmd-avetime-greenkubo-module"></span><h2>postmd.avetime.greenkubo module<a class="headerlink" href="#module-postmd.avetime.greenkubo" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="postmd.avetime.greenkubo.GreenKubo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avetime.greenkubo.</span></span><span class="sig-name descname"><span class="pre">GreenKubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.greenkubo.GreenKubo" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.avetime.avetime.GreenKubo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">postmd.avetime.avetime.</span></span><span class="sig-name descname"><span class="pre">GreenKubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#GreenKubo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.avetime.GreenKubo" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#postmd.avetime.avetime.AveTime" title="postmd.avetime.avetime.AveTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">AveTime</span></code></a></p>
 <p>calculate the auto-correlation function (acf) and corresponding integration
 for Green-Kubo formula. But you need to pay attention to the true equation of
@@ -285,14 +169,14 @@ including other parts, like multiply or divide by some properties.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.greenkubo.GreenKubo.cal_acf">
-<span class="sig-name descname"><span class="pre">cal_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.cal_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.greenkubo.GreenKubo.cal_acf" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.avetime.avetime.GreenKubo.calc_acf">
+<span class="sig-name descname"><span class="pre">calc_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlag_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#GreenKubo.calc_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.avetime.GreenKubo.calc_acf" title="Link to this definition"></a></dt>
 <dd><p>calculate the acf from data file and store in <code class="docutils literal notranslate"><span class="pre">self.nlag</span></code> and <code class="docutils literal notranslate"><span class="pre">self.acf</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data_type</strong> (<em>str</em><em>, </em><em>optional</em>) – the data type of self.data (raw or acf). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;raw&quot;</span></code>.</p></li>
-<li><p><strong>col</strong> (<em>int</em><em>, </em><em>optional</em>) – the column number(start from 0) of data to process in self.data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>col</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – the column number(start from 0) of data to process in self.data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>nlag</strong> (<em>int</em><em>, </em><em>optional</em>) – Limit the number of autocovariances returned.  Size of returned array is nlag + 1. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>nlag_col</strong> (<em>int</em><em>, </em><em>optional</em>) – the column number(start from <code class="docutils literal notranslate"><span class="pre">0</span></code>) of nlag in data, usually named “TimeDelta”. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p><strong>unit_trans</strong> (<em>float</em><em>, </em><em>optional</em>) – transform the unit of property to SI unit. Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
@@ -305,23 +189,23 @@ including other parts, like multiply or divide by some properties.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.greenkubo.GreenKubo.integrate_acf">
-<span class="sig-name descname"><span class="pre">integrate_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simpson'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.integrate_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.greenkubo.GreenKubo.integrate_acf" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.avetime.avetime.GreenKubo.integrate_acf">
+<span class="sig-name descname"><span class="pre">integrate_acf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'trap'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#GreenKubo.integrate_acf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.avetime.GreenKubo.integrate_acf" title="Link to this definition"></a></dt>
 <dd><p>Integrate the acf data to the Green-Kubo formula and store in <code class="docutils literal notranslate"><span class="pre">self.int_acf</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nlag</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – the nlag data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>acf</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – the acf data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – the integration method (<code class="docutils literal notranslate"><span class="pre">&quot;simpson&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;trap&quot;</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;simpson&quot;</span></code>.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – the integration method (<code class="docutils literal notranslate"><span class="pre">&quot;simpson&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;trap&quot;</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;trap&quot;</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.greenkubo.GreenKubo.write_result">
-<span class="sig-name descname"><span class="pre">write_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gk.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.write_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.greenkubo.GreenKubo.write_result" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.avetime.avetime.GreenKubo.write_results">
+<span class="sig-name descname"><span class="pre">write_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gk.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#GreenKubo.write_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.avetime.GreenKubo.write_results" title="Link to this definition"></a></dt>
 <dd><p>write the data of nlag, acf and integration of acf to file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -331,8 +215,8 @@ including other parts, like multiply or divide by some properties.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="postmd.avetime.greenkubo.GreenKubo.finite_size_correct_friction_coeff">
-<span class="sig-name descname"><span class="pre">finite_size_correct_friction_coeff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/greenkubo.html#GreenKubo.finite_size_correct_friction_coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.greenkubo.GreenKubo.finite_size_correct_friction_coeff" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="postmd.avetime.avetime.GreenKubo.finite_size_correct_friction_coeff">
+<span class="sig-name descname"><span class="pre">finite_size_correct_friction_coeff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/postmd/avetime/avetime.html#GreenKubo.finite_size_correct_friction_coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postmd.avetime.avetime.GreenKubo.finite_size_correct_friction_coeff" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

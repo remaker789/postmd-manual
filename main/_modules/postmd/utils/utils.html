@@ -51,7 +51,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">PostMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">postmd</a></li>
 </ul>
 
         </div>
@@ -85,12 +85,31 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">C</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+
+<span class="n">fig_ext</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;gif&quot;</span><span class="p">,</span> <span class="s2">&quot;bmp&quot;</span><span class="p">,</span> <span class="s2">&quot;svg&quot;</span><span class="p">,</span> <span class="s2">&quot;eps&quot;</span><span class="p">,</span> <span class="s2">&quot;ps&quot;</span><span class="p">,</span> <span class="s2">&quot;tif&quot;</span><span class="p">,</span> <span class="s2">&quot;tiff&quot;</span><span class="p">,</span> <span class="s2">&quot;xbm&quot;</span><span class="p">,</span> <span class="s2">&quot;xpm&quot;</span><span class="p">,</span> <span class="s2">&quot;xwd&quot;</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;gif&quot;</span><span class="p">,</span> <span class="s2">&quot;bmp&quot;</span><span class="p">,</span> <span class="s2">&quot;svg&quot;</span><span class="p">,</span> <span class="s2">&quot;eps&quot;</span><span class="p">,</span> <span class="s2">&quot;ps&quot;</span><span class="p">,</span> <span class="s2">&quot;tif&quot;</span><span class="p">,</span> <span class="s2">&quot;tiff&quot;</span><span class="p">,</span> <span class="s2">&quot;xbm&quot;</span><span class="p">,</span> <span class="s2">&quot;xpm&quot;</span><span class="p">,</span> <span class="s2">&quot;xwd&quot;</span><span class="p">]</span> <span class="c1"># common extension of figures</span>
+<span class="n">video_ext</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;avi&quot;</span><span class="p">,</span> <span class="s2">&quot;mov&quot;</span><span class="p">,</span> <span class="s2">&quot;mpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="s2">&quot;wmv&quot;</span><span class="p">,</span> <span class="s2">&quot;mkv&quot;</span><span class="p">,</span> <span class="s2">&quot;flv&quot;</span><span class="p">,</span> <span class="s2">&quot;webm&quot;</span><span class="p">,</span> <span class="s2">&quot;gif&quot;</span><span class="p">]</span> <span class="c1"># common extenstion of videos</span>
+
+
+<div class="viewcode-block" id="mapdim2col">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.mapdim2col">[docs]</a>
+<span class="k">def</span> <span class="nf">mapdim2col</span><span class="p">(</span><span class="n">dim_map</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># dim = &quot;xyz&quot;</span>
+    <span class="c1"># dim_map = {&#39;x&#39;: &#39;value1&#39;, &#39;y&#39;: &#39;value2&#39;, &#39;z&#39;: &#39;value3&#39;}  # 假设这是dim_map字典</span>
+    <span class="c1"># return mapped_col=[&#39;value1&#39;, &#39;value2&#39;, &#39;value3&#39;]</span>
+    
+    <span class="c1"># 将dim中的每个字符映射到dim_map中的值</span>
+    <span class="n">mapped_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim_map</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">dim</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mapped_col</span></div>
 
 
 
-<div class="viewcode-block" id="average_replicates">
-<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.average_replicates">[docs]</a>
-<span class="k">def</span> <span class="nf">average_replicates</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">):</span>
+
+
+<div class="viewcode-block" id="calc_replicas_mean_std">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.calc_replicas_mean_std">[docs]</a>
+<span class="k">def</span> <span class="nf">calc_replicas_mean_std</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;average the data from replicates.</span>
 
 <span class="sd">    Args:</span>
@@ -101,15 +120,15 @@
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import numpy as np</span>
-<span class="sd">        &gt;&gt;&gt; from postmd.utils import average_replicates</span>
+<span class="sd">        &gt;&gt;&gt; from postmd.utils import calc_replicas_mean_std</span>
 <span class="sd">        &gt;&gt;&gt; data_arrays = [</span>
 <span class="sd">        &gt;&gt;&gt;    np.array([4.3, 5.6, 3.8, 5.1, 4.9]),  # First dataset</span>
 <span class="sd">        &gt;&gt;&gt;    np.array([3.2, 4.5, 4.1, 3.7, 4.3]),  # Second dataset</span>
 <span class="sd">        &gt;&gt;&gt;    np.array([5.5, 6.2, 5.9, 6.1, 5.8]),   # Third dataset</span>
 <span class="sd">        &gt;&gt;&gt;    ]</span>
-<span class="sd">        &gt;&gt;&gt; # Calculate the average of each dataset (i.e., each array).</span>
-<span class="sd">        &gt;&gt;&gt; average = average_replicates(data_arrays)</span>
-<span class="sd">        &gt;&gt;&gt; print(f&quot;Averages of replicates: {average}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; # Calculate mean and std of each dataset (i.e., each array).</span>
+<span class="sd">        &gt;&gt;&gt; mean, std = calc_replicas_mean_std(data_arrays)</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;replicas mean: {mean}&quot;)</span>
 <span class="sd">        Averages of replicates: [4.33333333 5.43333333 4.6        4.96666667 5.        ]</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">data_arrays</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">)</span>
@@ -117,15 +136,15 @@
     <span class="k">if</span> <span class="n">data_arrays</span><span class="o">.</span><span class="n">ndim</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input should be a list of numpy arrays.&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Use numpy&#39;s mean function to calculate the average of each dataset (i.e., each array).</span>
-    <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="n">ddof</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">average</span></div>
+    <span class="k">return</span> <span class="n">_mean</span><span class="p">,</span> <span class="n">_std</span></div>
 
 
-<div class="viewcode-block" id="cal_box_length">
-<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.cal_box_length">[docs]</a>
-<span class="k">def</span> <span class="nf">cal_box_length</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">NA</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="calc_box_length">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.calc_box_length">[docs]</a>
+<span class="k">def</span> <span class="nf">calc_box_length</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">NA</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the length of a cubic water box.</span>
 
 <span class="sd">    Warning: </span>
@@ -141,7 +160,7 @@
 <span class="sd">        </span>
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import postmd.utils as utils</span>
-<span class="sd">        &gt;&gt;&gt; utils.cal_box_length(1000, density=1.0)</span>
+<span class="sd">        &gt;&gt;&gt; utils.calc_box_length(1000, density=1.0)</span>
 <span class="sd">        The length of a cubic water box for 1000 water molecules and 1.0 g/cm^3 is 31.043047 Angstrom</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">NA</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -193,11 +212,49 @@
             <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
+
+
+
+
+<div class="viewcode-block" id="backup">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.backup">[docs]</a>
+<span class="k">def</span> <span class="nf">backup</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="c1"># 用于作为写入文件备份的装饰器。目前目录备份还未实现。</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span><span class="c1"># if &quot;path&quot; in kwargs.keys else kwargs[&quot;filepath&quot;]</span>
+        
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># path = dname + fname</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">dname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="n">fext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span><span class="c1"># file extension</span>
+        
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">fext</span> <span class="ow">in</span> <span class="n">fig_ext</span><span class="p">:</span>
+                    <span class="n">bk_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.bk</span><span class="si">%03d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">counter</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">bk_fname</span> <span class="o">=</span> <span class="n">fname</span> <span class="o">+</span> <span class="s2">&quot;.bk</span><span class="si">%03d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">counter</span> <span class="c1"># formatting .bkxxx</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">bk_fname</span><span class="p">):</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span><span class="n">bk_fname</span><span class="p">))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&#39; is backup to &#39;</span><span class="si">{</span><span class="n">bk_fname</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span></div>
+
     
-    
-<div class="viewcode-block" id="cumave">
-<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.cumave">[docs]</a>
-<span class="k">def</span> <span class="nf">cumave</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="cummean">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.cummean">[docs]</a>
+<span class="k">def</span> <span class="nf">cummean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the cumulative average.</span>
 
 <span class="sd">    Args:</span>
@@ -212,7 +269,7 @@
 <span class="sd">        &gt;&gt;&gt; array = np.arange(9)</span>
 <span class="sd">        &gt;&gt;&gt; print(array)</span>
 <span class="sd">        [0 1 2 3 4 5 6 7 8]</span>
-<span class="sd">        &gt;&gt;&gt; utils.cumave(array)</span>
+<span class="sd">        &gt;&gt;&gt; utils.cummean(array)</span>
 <span class="sd">        array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. ])</span>
 <span class="sd">            </span>
 <span class="sd">    &quot;&quot;&quot;</span>    
@@ -224,9 +281,9 @@
 
 
 
-<div class="viewcode-block" id="stat_bin">
-<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.stat_bin">[docs]</a>
-<span class="k">def</span> <span class="nf">stat_bin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="stats_mean_std_bins">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.stats_mean_std_bins">[docs]</a>
+<span class="k">def</span> <span class="nf">stats_mean_std_bins</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;statistic the mean and standard deviation(ddof=0) of x and y in each bin.</span>
 <span class="sd">    Here we used the [scipy.stats.binned_statistic](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binned_statistic.html) function.</span>
 
@@ -269,6 +326,68 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39; is not a dir!&quot;</span><span class="p">)</span> </div>
 
     
+
+
+<span class="c1"># 效率很低</span>
+<span class="c1"># def calc_green_kubo(data, nlag=None):</span>
+<span class="c1">#     &quot;&quot;&quot;calculate the auto-correlation function in the Green-Kubo formula</span>
+
+<span class="c1">#     Args:</span>
+<span class="c1">#         data (_type_): _description_</span>
+<span class="c1">#         nlag (_type_, optional): _description_. Defaults to None.</span>
+
+<span class="c1">#     Returns:</span>
+<span class="c1">#         _type_: _description_</span>
+<span class="c1">#     &quot;&quot;&quot;    </span>
+<span class="c1">#     print(&quot;Begin calculate the auto-correlation function in the Green-Kubo formula&quot;)</span>
+<span class="c1">#     data = np.array(data)</span>
+<span class="c1">#     n = len(data)</span>
+<span class="c1">#     acf=np.zeros(nlag)</span>
+<span class="c1">#     acf[0]=(data**2).sum()</span>
+<span class="c1">#     for i in range(1,nlag):</span>
+<span class="c1">#         for j in range(n-i):</span>
+<span class="c1">#             acf[i]+=data[j]*data[j+i]</span>
+<span class="c1">#     acf = acf / (n - np.arange(nlag))</span>
+<span class="c1">#     return acf</span>
+    
+    
+<div class="viewcode-block" id="calc_acf">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.calc_acf">[docs]</a>
+<span class="k">def</span> <span class="nf">calc_acf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the auto-correlation function in the Green-Kubo formula</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (_type_): _description_</span>
+<span class="sd">        nlag (_type_, optional): _description_. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        _type_: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin calculate the auto-correlation function in the Green-Kubo formula&quot;</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">acf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nlag</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">acf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlag</span><span class="p">):</span>
+        <span class="n">acf</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span> <span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="n">acf</span> <span class="o">=</span> <span class="n">acf</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nlag</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">acf</span></div>
+
+    
+
+<div class="viewcode-block" id="judge_plateau">
+<a class="viewcode-back" href="../../../utils/toc.html#postmd.utils.judge_plateau">[docs]</a>
+<span class="k">def</span> <span class="nf">judge_plateau</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+    <span class="c1"># 判断一段数据是否会偏离水平线太多</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_max</span><span class="o">-</span><span class="n">_mean</span><span class="p">)</span><span class="o">/</span><span class="n">_mean</span> <span class="o">&lt;</span> <span class="n">threshold</span> <span class="ow">and</span> <span class="p">(</span><span class="n">_min</span><span class="o">-</span><span class="n">_mean</span><span class="p">)</span><span class="o">/</span><span class="n">_mean</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 </pre></div>
 

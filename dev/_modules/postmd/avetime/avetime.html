@@ -51,7 +51,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">SOURCE CODE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">PostMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">postmd</a></li>
 </ul>
 
         </div>
@@ -84,11 +84,16 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">simpson</span><span class="p">,</span> <span class="n">trapezoid</span>
 
 <span class="kn">from</span> <span class="nn">..system</span> <span class="kn">import</span> <span class="n">MDFile</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">calc_acf</span>
+
+
+
 
 <div class="viewcode-block" id="AveTime">
-<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.AveTime">[docs]</a>
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.AveTime">[docs]</a>
 <span class="k">class</span> <span class="nc">AveTime</span><span class="p">(</span><span class="n">MDFile</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timestep</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;process the data generated from &quot;fix ave/time&quot; command in LAMMPS</span>
@@ -104,7 +109,7 @@
 
 
 <div class="viewcode-block" id="AveTime.read_file">
-<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.AveTime.read_file">[docs]</a>
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.AveTime.read_file">[docs]</a>
     <span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span><span class="nb">list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header_line</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;read file generated from ``fix ave/time`` command.</span>
 
@@ -130,6 +135,146 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
 </div>
 
+
+
+
+<span class="c1"># 一般来说GreenKubo是对平衡态下某些参数的自相关函数进行时间上的积分。</span>
+<div class="viewcode-block" id="GreenKubo">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.GreenKubo">[docs]</a>
+<span class="k">class</span> <span class="nc">GreenKubo</span><span class="p">(</span><span class="n">AveTime</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;calculate the auto-correlation function (acf) and corresponding integration</span>
+<span class="sd">    for Green-Kubo formula. But you need to pay attention to the true equation of</span>
+<span class="sd">    Green-Kubo formula, because this script just do the integration of acf, not</span>
+<span class="sd">    including other parts, like multiply or divide by some properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timestep</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timestep</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="o">=</span><span class="kc">None</span>
+
+    <span class="c1"># # after using fix ave/correlate ave running</span>
+    <span class="c1"># def integrate(self, *, Nevery:int=None, Nrepeat:int=None, Nfreq:int=None, </span>
+    <span class="c1">#               overwrite:bool=True, col_time:int or str = 1, col_data:int or str=None):</span>
+    <span class="c1">#     print(&#39;&#39;&#39;The data must be genetated using &quot;ave running&quot; in fix ave/correlate commmand&#39;&#39;&#39;)</span>
+        
+    <span class="c1">#     if overwrite:</span>
+    <span class="c1">#         # ! 不确定fix ave/correlate中的names是第几行。</span>
+    <span class="c1">#         df = self.read_file(self.path, names=None, num_line=2)</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         pass     # todo: 不是overwrite的数据，只需要取最后一个block</span>
+    
+    
+<div class="viewcode-block" id="GreenKubo.calc_acf">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.GreenKubo.calc_acf">[docs]</a>
+    <span class="k">def</span> <span class="nf">calc_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nlag_col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_trans</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;calculate the acf from data file and store in ``self.nlag`` and ``self.acf``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data_type (str, optional): the data type of self.data (raw or acf). Defaults to ``&quot;raw&quot;``.</span>
+<span class="sd">            col (int or str, optional): the column number(start from 0) of data to process in self.data. Defaults to ``None``.</span>
+<span class="sd">            nlag (int, optional): Limit the number of autocovariances returned.  Size of returned array is nlag + 1. Defaults to ``None``.</span>
+<span class="sd">            nlag_col (int, optional): the column number(start from ``0``) of nlag in data, usually named &quot;TimeDelta&quot;. Defaults to ``1``.</span>
+<span class="sd">            unit_trans (float, optional): transform the unit of property to SI unit. Defaults to ``1.0``.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please specify the column number of data you want to process!&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># if the data are generated from &quot;fix ave/correlate type auto overwriting&quot;</span>
+        <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s2">&quot;acf&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please ensure that your data are generated from &#39;fix ave/correlate type auto overwriting&#39; command!&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">==</span><span class="nb">int</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">col</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">unit_trans</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">nlag_col</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">col</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">unit_trans</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">nlag_col</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The type of &#39;col&#39; is not supported! Please use int or str instead.&quot;</span><span class="p">)</span>
+
+        
+        <span class="c1"># if the data is just the raw data, not processed by acf</span>
+        <span class="k">elif</span> <span class="n">data_type</span><span class="o">==</span><span class="s2">&quot;raw&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please ensure your data are generate as raw data!&quot;</span><span class="p">)</span>
+            <span class="c1"># in lammps, the data in the first step of &#39;run&#39; command is usually unstable</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The script will drop out first line due to unstable data in the initial step.&quot;</span><span class="p">)</span>
+            <span class="c1"># from statsmodels package</span>
+            <span class="n">nobs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">nlag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">nlag</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">nobs</span><span class="p">)),</span> <span class="n">nobs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">==</span><span class="nb">int</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">acf</span> <span class="o">=</span> <span class="n">calc_acf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="n">col</span><span class="p">]</span><span class="o">*</span><span class="n">unit_trans</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="n">nlag</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">acf</span> <span class="o">=</span> <span class="n">calc_acf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="n">col</span><span class="p">]</span><span class="o">*</span><span class="n">unit_trans</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="n">nlag</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The type of &#39;col&#39; is not supported! Please use int or str instead.&quot;</span><span class="p">)</span>  
+              
+            <span class="c1"># todo 按道理这里也要设置一个interval参数，因为不一定每1个step就输出一次raw data!</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the data type &#39;</span><span class="si">{</span><span class="n">data_type</span><span class="si">}</span><span class="s2">&#39; is not supported! Please use &#39;acf&#39; or &#39;raw&#39; instead.&quot;</span><span class="p">)</span></div>
+
+            
+        
+            
+    
+    <span class="c1"># 这里的integrate只是用来对acf进行积分</span>
+<div class="viewcode-block" id="GreenKubo.integrate_acf">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.GreenKubo.integrate_acf">[docs]</a>
+    <span class="k">def</span> <span class="nf">integrate_acf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;trap&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Integrate the acf data to the Green-Kubo formula and store in ``self.int_acf``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            nlag (np.ndarray, optional): the nlag data. Defaults to ``None``.</span>
+<span class="sd">            acf (np.ndarray, optional): the acf data. Defaults to ``None``.</span>
+<span class="sd">            method (str, optional): the integration method (``&quot;simpson&quot;`` or ``&quot;trap&quot;``). Defaults to ``&quot;trap&quot;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-------- Integrate ACF using </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> method ---------&quot;</span><span class="p">)</span>
+        <span class="n">acf</span> <span class="o">=</span> <span class="n">acf</span> <span class="k">if</span> <span class="n">acf</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">acf</span>
+        <span class="n">nlag</span> <span class="o">=</span> <span class="n">nlag</span> <span class="k">if</span> <span class="n">nlag</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlag</span>
+        
+        <span class="k">if</span> <span class="n">acf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please input acf!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nlag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please input nlag!&quot;</span><span class="p">)</span>
+        <span class="n">int_acf</span><span class="o">=</span><span class="p">[]</span>        
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">acf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;simpson&quot;</span><span class="p">:</span>    
+                <span class="n">_int</span> <span class="o">=</span> <span class="n">simpson</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">acf</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">nlag</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;trap&quot;</span><span class="p">:</span>
+                <span class="n">_int</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">acf</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">nlag</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;method &#39;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&#39; is not supported yet!&quot;</span><span class="p">)</span>
+            <span class="n">int_acf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_int</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">int_acf</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">timestep</span><span class="o">*</span><span class="mf">1e-15</span></div>
+
+    
+<div class="viewcode-block" id="GreenKubo.write_results">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.GreenKubo.write_results">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;gk.csv&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;write the data of nlag, acf and integration of acf to file</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filename (str, optional): the filename for output. Defaults to ``&quot;gk.csv&quot;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>               
+        <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nlag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">int_acf</span><span class="p">],</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;nlag,acf,int_acf&quot;</span><span class="p">)</span></div>
+
+        
+        
+    <span class="c1"># 2023-08-28 校正有限尺寸的摩擦系数，因为green-kubo计算的摩擦系数会降低，所以我们需要校正</span>
+    <span class="c1"># 目前是根据Haruki Oga_2019_JCP的文章校正的    </span>
+    <span class="c1">#pending 不确定会不会做。。。</span>
+<div class="viewcode-block" id="GreenKubo.finite_size_correct_friction_coeff">
+<a class="viewcode-back" href="../../../postmd.avetime.html#postmd.avetime.avetime.GreenKubo.finite_size_correct_friction_coeff">[docs]</a>
+    <span class="k">def</span> <span class="nf">finite_size_correct_friction_coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</div>
 
 </pre></div>
 
